@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 _ = builder.Services
-    .AddEndpointsApiExplorer()
     .AddDatabaseDeveloperPageExceptionFilter()
     .AddDbContext<TodoDbContext>(opt => opt.UseInMemoryDatabase("TodoList"))
     .AddAWSLambdaHosting(LambdaEventSource.HttpApi);

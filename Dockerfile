@@ -10,9 +10,6 @@ COPY ./TodoApi.Tests/TodoApi.Tests.csproj ./TodoApi.Tests/
 # Restore
 RUN dotnet restore -v minimal
 
-# Bust Docker Cache
-ARG CACHE_BUST
-
 # Copy remaining source and test code for building
 COPY . /
 
@@ -33,4 +30,4 @@ WORKDIR /var/task
 COPY --from=build /app .
 
 # .NET 6 Minimal API is an executable assembly
-CMD [ "TodoApi" ]
+ENTRYPOINT ["dotnet", "TodoApi.dll"]
