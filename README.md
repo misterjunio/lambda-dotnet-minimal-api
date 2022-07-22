@@ -15,3 +15,10 @@
 - Postman collection provided to test the API, just replace the `lambdaUrl` collection variable with your URL
 
 ## Third step, wire up CI/CD ⏳
+
+- Set up versioning stuff ✅
+- Build the Docker image ✅
+- Create ECR repo if it doesn't exist ✅
+- Push new image to the repo ✅
+- Run CDK deployment ⏳
+- Short validation test ⏳
