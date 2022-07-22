@@ -12,5 +12,6 @@
 - Using CDK environment variables, should be all good if the CDK CLI is setup corretly
 - Hardcoded function and ECR repo names for now
 - Lambda function URL with no auth whatsoever as an output
+- Postman collection provided to test the API, just replace the `lambdaUrl` collection variable with your URL
 
 ## Third step, wire up CI/CD ⏳
