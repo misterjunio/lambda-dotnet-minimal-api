@@ -453,4 +453,4 @@ dotnet_diagnostic.IDE0010.severity = none
 dotnet_diagnostic.IDE0072.severity = none
 
 # Allow types outside namespaces
-dotnet_diagnostic.CA1050.severity = none
+dotnet_diagnostic.CA1050.severity = suggestion

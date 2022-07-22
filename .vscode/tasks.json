@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/TodoApi/TodoApi.csproj",
+                "${workspaceFolder}/Api/TodoApi/TodoApi.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/TodoApi/TodoApi.csproj",
+                "${workspaceFolder}/Api/TodoApi/TodoApi.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/TodoApi/TodoApi.csproj"
+                "${workspaceFolder}/Api/TodoApi/TodoApi.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
