@@ -3,15 +3,15 @@ FROM public.ecr.aws/lambda/dotnet:6 AS base
 # Setup build image
 FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim as build
 WORKDIR /
-COPY ./TodoApi.sln ./
-COPY ./TodoApi/TodoApi.csproj ./TodoApi/
-COPY ./TodoApi.Tests/TodoApi.Tests.csproj ./TodoApi.Tests/
+COPY ./Api/TodoApi.sln ./
+COPY ./Api/TodoApi/TodoApi.csproj ./TodoApi/
+COPY ./Api/TodoApi.Tests/TodoApi.Tests.csproj ./TodoApi.Tests/
 
 # Restore
 RUN dotnet restore -v minimal
 
 # Copy remaining source and test code for building
-COPY . /
+COPY ./Api/ ./
 
 # Build
 RUN dotnet build --no-restore -c Release -v minimal
