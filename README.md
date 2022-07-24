@@ -20,5 +20,5 @@
 - Build the Docker image ✅
 - Create ECR repo if it doesn't exist ✅ - using long term credentials for simplicity, encourage to visit [this link](https://github.com/aws-actions/configure-aws-credentials) and create short-lived credentials with an IAM role
 - Push new image to the repo ✅
-- Run CDK deployment ⏳
+- Run CDK deployment ✅
 - Short validation test ⏳

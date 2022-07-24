@@ -14,6 +14,7 @@
     ]
   },
   "context": {
+    "lambdaFunctionName": "junio-test-minimal-api",
     "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
     "@aws-cdk/core:stackRelativeExports": true,
     "@aws-cdk/aws-rds:lowercaseDbIdentifier": true,
