@@ -6,9 +6,9 @@ using Constructs;
 
 namespace Infra.Stacks
 {
-    public class MainStack : Stack
+    public class MinimalApiContainerLambdaStack : Stack
     {
-        internal MainStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
+        internal MinimalApiContainerLambdaStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
             var lambdaFunctionName = (string)this.Node.TryGetContext("lambdaFunctionName");
             if (string.IsNullOrWhiteSpace(lambdaFunctionName))

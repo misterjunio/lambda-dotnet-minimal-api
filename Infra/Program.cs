@@ -8,7 +8,7 @@ namespace Infra
         public static void Main(string[] args)
         {
             var app = new App();
-            _ = new MainStack(app, "MainStack", new StackProps
+            _ = new MinimalApiContainerLambdaStack(app, "MinimalApiContainerLambdaStack", new StackProps
             {
                 // If you don't specify 'env', this stack will be environment-agnostic.
                 // Account/Region-dependent features and context lookups will not work,
