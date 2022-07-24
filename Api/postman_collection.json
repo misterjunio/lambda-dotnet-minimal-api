@@ -154,7 +154,7 @@
 	"variable": [
 		{
 			"key": "lambdaUrl",
-			"value": "https://23vxkd7tusumzm7z2srjipbile0xirto.lambda-url.ap-southeast-2.on.aws",
+			"value": "[YOUR-LAMBDA-URL]",
 			"type": "string"
 		}
 	]

@@ -33,7 +33,6 @@ jobs:
       IMAGE_TAG: ${{ needs.initialise.outputs.image_tag }}
     steps:
       - name: Checkout repo
-        id: checkout
         uses: actions/checkout@v3
 
       - name: Login to Amazon ECR
@@ -64,13 +63,35 @@ jobs:
       - build-and-deploy-lambda-image
     env:
       IMAGE_TAG: ${{ needs.initialise.outputs.image_tag }}
+    outputs:
+      lambda_url: ${{ steps.cdk.outputs.lambda_url }}
     steps:
       - name: Checkout repo
-        id: checkout
         uses: actions/checkout@v3
 
       - name: Install and run CDK
+        id: cdk
         run: |
           npm i -g aws-cdk
           cd Infra/
-          cdk deploy --require-approval never -c ecrRepoName=$ECR_REPO_NAME -c lambdaFunctionImageTag=$IMAGE_TAG
+          cdk deploy --require-approval never -c ecrRepoName=$ECR_REPO_NAME -c lambdaFunctionImageTag=$IMAGE_TAG --outputs-file ./cdk-outputs.json
+          LAMBDA_URL=$(jq -r .MainStack.LambdaFunctionUrl cdk-outputs.json)
+          echo "::set-output name=lambda_url::$(eval printf "%s" "$LAMBDA_URL")"
+
+  test-lambda:
+    name: Test Lambda
+    runs-on: ubuntu-latest
+    needs:
+      - upgrade-lambda
+    env:
+      LAMBDA_URL: ${{ needs.upgrade-lambda.outputs.lambda_url }}
+    steps:
+      - name: cURL Lambda URL
+        run: |
+          status_code=$(curl -L --write-out '%{http_code}' --silent --output /dev/null $LAMBDA_URL)
+          if [[ "$status_code" -ne 200 ]]; then
+              echo "Failed, got HTTP status $status_code"
+              exit 1
+          else
+              exit 0
+          fi
